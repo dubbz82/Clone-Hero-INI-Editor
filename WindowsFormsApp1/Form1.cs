@@ -27,6 +27,7 @@ namespace WindowsFormsApp1
 
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            clearData();
             OpenFileDialog f = new OpenFileDialog();
             f.Filter = "CH INI Configuration Files |*.ini";
             f.Multiselect = false;
@@ -45,16 +46,17 @@ namespace WindowsFormsApp1
                     filename = filename.Replace("/", "_");
                     filename = filename.Replace(":", " ");
                     System.IO.Directory.CreateDirectory(Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\backup\\");
-                    System.IO.File.Copy(f.FileName, Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\backup\\" +filename);
+                    System.IO.File.Copy(f.FileName, Path.GetDirectoryName(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName) + "\\backup\\" + filename);
                 }
                 path = f.FileName;
                 isNew = false;
                 System.IO.StreamReader file = new System.IO.StreamReader(path);
-                string line;
-                while ((line = file.ReadLine())!= null)
-                    {
+
+                foreach (string txtline in File.ReadLines(path))
+                {
                     //chop up the output one line at a time to determine what value is selected..this will be a bit ugly..
                     //fix for lines with no space between the equal sign and the label...
+                    string line = txtline;
                     if (line.Contains(" = ") == false && line.Contains("]") == false && line.Contains("]") == false && line.Length > 0 && line.StartsWith(";") == false)
                     {
                         int position = line.IndexOf("=");
@@ -63,51 +65,52 @@ namespace WindowsFormsApp1
                         start = start.Trim();
                         end = end.Trim();
                         end = end.Replace("=", " = ");
+
                         line = start + end;
 
                     }
-                        if (line.StartsWith("artist = "))
+                    if (line.StartsWith("artist = "))
+                    {
+                        txtArtist.Text = line.Replace("artist = ", "");
+                    }
+                    if (line.StartsWith("name = "))
+                    {
+                        txtSongName.Text = line.Replace("name = ", "");
+                    }
+                    if (line.StartsWith("frets = "))
+                    {
+                        txtFrets.Text = line.Replace("frets = ", "");
+                    }
+                    if (line.StartsWith("icon = "))
+                    {
+                        txtIcon.Text = line.Replace("icon = ", "");
+                    }
+                    if (line.StartsWith("album = "))
+                    {
+                        txtAlbum.Text = line.Replace("album = ", "");
+                    }
+                    if (line.StartsWith("year = "))
+                    {
+                        txtYear.Text = line.Replace("year = ", "");
+                    }
+                    if (line.StartsWith("diff_guitar = "))
+                    {
+                        string tmp = line.Replace("diff_guitar = ", "");
+                        switch (tmp)
                         {
-                            txtArtist.Text = line.Replace("artist = ", "");
-                        }
-                        if (line.StartsWith("name = "))
-                        {
-                            txtSongName.Text = line.Replace("name = ", "");
-                        }
-                        if (line.StartsWith("frets = "))
-                        {
-                            txtFrets.Text = line.Replace("frets = ", "");
-                        }
-                        if (line.StartsWith("icon = "))
-                        {
-                            txtIcon.Text = line.Replace("icon = ", "");
-                        }
-                        if (line.StartsWith("album = "))
-                        {
-                            txtAlbum.Text = line.Replace("album = ", "");
-                        }
-                        if (line.StartsWith("year = "))
-                        {
-                            txtYear.Text = line.Replace("year = ", "");
-                        }
-                        if (line.StartsWith("diff_guitar = "))
-                        {
-                            string tmp = line.Replace("diff_guitar = ", "");
-                            switch(tmp)
-                            {
-                                case "-1":
-                                case "0":
-                                case "1":
-                                case "2":
-                                case "3":
-                                case "4":
-                                case "5":
-                                case "6":
+                            case "-1":
+                            case "0":
+                            case "1":
+                            case "2":
+                            case "3":
+                            case "4":
+                            case "5":
+                            case "6":
                                 cboguitarDifficulty.SelectedIndex = int.Parse(tmp) + 1;
                                 break;
-                           
-                            }
+
                         }
+                    }
                     if (line.StartsWith("diff_band = "))
                     {
                         string tmp = line.Replace("diff_band = ", "");
@@ -217,33 +220,48 @@ namespace WindowsFormsApp1
                         }
                     }
                     if (line.StartsWith("genre = "))
-                        {
+                    {
                         txtGenre.Text = line.Replace("genre = ", "");
-                        }
-                        if (line.StartsWith("song_length = "))
-                        {
+                    }
+                    if (line.StartsWith("song_length = "))
+                    {
 
                         txtSongLength.Text = line.Replace("song_length = ", "");
-                        }
-                        if (line.StartsWith("preview_start_time = "))
-                        {
+                    }
+                    if (line.StartsWith("preview_start_time = "))
+                    {
 
                         txtPreviewStartTime.Text = line.Replace("preview_start_time = ", "");
-                        }
-                        if (line.StartsWith("charter = "))
-                        {
-                        txtCharter.Text = line.Replace("charter = ", "");
-                        }
-                        if (line.StartsWith("count = "))
-                        {
-                        txtCount.Text = line.Replace("count = ", "");
-                        }
-
                     }
-                file.Close();
+                    if (line.StartsWith("charter = "))
+                    {
+                        txtCharter.Text = line.Replace("charter = ", "");
+                    }
+                    if (line.StartsWith("count = "))
+                    {
+                        txtCount.Text = line.Replace("count = ", "");
+                    }
+                    if (line.StartsWith("playlist_track ="))
+                    {
+                        txtPlaylistTrack.Text = line.Replace("playlist_track = ", "");
+                    }
+                    if (line.StartsWith("album_track = "))
+                    {
+                        txtAlbumTrack.Text = line.Replace("album_track = ", "");
+                    }
+
+                    if (line.StartsWith(";"))
+                    {
+                        txtComments.Text = txtComments.Text + line.Replace(";", "").Trim() + Environment.NewLine;
+                    }
                 }
 
-            
+
+                file.Close();
+                txtComments.Text = txtComments.Text.Trim();
+            }
+
+
 
         }
 
@@ -253,7 +271,7 @@ namespace WindowsFormsApp1
             DataTable dt = new DataTable();
             dt.Columns.Add("Name");
             dt.Columns.Add("Value");
-            for (int i = - 1; i < 7; i++)
+            for (int i = -1; i < 7; i++)
             {
                 if (i == -1)
                 {
@@ -297,31 +315,40 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (isNew == false)
+            string err = validate();
+            if (err == "")
             {
-                
-                DialogResult r;
-                r = MessageBox.Show("This will overwrite the existing file", "Overwrite?", MessageBoxButtons.OKCancel);
-                if (r == DialogResult.OK)
+                if (isNew == false)
                 {
-                    writeFile(path);
+
+                    DialogResult r;
+                    r = MessageBox.Show("This will overwrite the existing file", "Overwrite?", MessageBoxButtons.OKCancel);
+                    if (r == DialogResult.OK)
+                    {
+                        writeFile(path);
+                    }
+                }
+                else
+                {
+                    SaveFileDialog f = new SaveFileDialog();
+                    f.AddExtension = true;
+                    f.DefaultExt = ".ini";
+                    f.Filter = "CH INI Configuration Files |*.ini";
+                    DialogResult r;
+                    r = f.ShowDialog();
+                    if (r == DialogResult.OK)
+                    {
+                        path = f.FileName;
+                        writeFile(path);
+                    }
                 }
             }
             else
             {
-                SaveFileDialog f = new SaveFileDialog();
-                f.AddExtension = true;
-                f.DefaultExt = ".ini";
-                f.Filter = "CH INI Configuration Files |*.ini";
-                DialogResult r;
-                r = f.ShowDialog();
-                if (r == DialogResult.OK)
-                {
-                    path = f.FileName;
-                    writeFile(path);
-                }
+                MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+           
+
 
         }
 
@@ -337,6 +364,81 @@ namespace WindowsFormsApp1
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            clearData();
+            isNew = true;
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnSave.PerformClick();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string err = validate();
+            if (err == "")
+            {
+                SaveFileDialog f = new SaveFileDialog();
+                DialogResult r;
+                r = f.ShowDialog();
+                f.AddExtension = true;
+                f.DefaultExt = ".ini";
+                f.Filter = "CH INI Configuration Files |*.ini";
+                if (r == DialogResult.OK)
+                {
+                    path = f.FileName;
+                    writeFile(path);
+                }
+            }
+            else
+            {
+                MessageBox.Show(err, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+        }
+
+        private void writeFile(string path)
+        {
+
+            using (System.IO.StreamWriter outputFile = new StreamWriter(path, false))
+            {
+                outputFile.WriteLine("[Song]");
+                foreach (string str in txtComments.Text.Split('\n'))
+                {
+                    outputFile.WriteLine(";" + str);
+                }
+
+                outputFile.WriteLine("name = " + txtSongName.Text);
+                outputFile.WriteLine("artist = " + txtArtist.Text);
+                outputFile.WriteLine("album = " + txtAlbum.Text);
+                outputFile.WriteLine("genre = " + txtGenre.Text);
+                outputFile.WriteLine("year = " + txtYear.Text);
+                outputFile.WriteLine("song_length = " + txtSongLength.Text);
+                outputFile.WriteLine("count = " + txtCount.Text);
+
+                outputFile.WriteLine("diff_band = " + cboBandDifficulty.SelectedValue);
+                outputFile.WriteLine("diff_guitar = " + cboguitarDifficulty.SelectedValue);
+                outputFile.WriteLine("diff_bass = " + cboBassDifficulty.SelectedValue);
+                outputFile.WriteLine("diff_drums = " + cboDrumsDifficulty.SelectedValue);
+                outputFile.WriteLine("diff_keys = " + cboKeysDifficulty.SelectedValue);
+                outputFile.WriteLine("diff_guitarghl = " + cboGuitarGHLDifficulty.SelectedValue);
+                outputFile.WriteLine("diff_bassghl = " + cboBassGHLDifficulty.SelectedValue);
+
+                outputFile.WriteLine("preview_start_time = " + txtPreviewStartTime.Text);
+                outputFile.WriteLine("frets = " + txtFrets.Text);
+                outputFile.WriteLine("charter = " + txtCharter.Text);
+                outputFile.WriteLine("icon = " + txtIcon.Text);
+                outputFile.WriteLine("album_track = " + txtAlbumTrack.Text);
+                outputFile.WriteLine("playlist_track = " + txtPlaylistTrack.Text);
+
+
+            }
+            MessageBox.Show("ini file saved successfully!", "Success!");
+        }
+
+        private void clearData()
+        {
+
             txtSongName.Text = "";
             txtArtist.Text = "";
             txtAlbum.Text = "";
@@ -348,6 +450,8 @@ namespace WindowsFormsApp1
             txtIcon.Text = "";
             txtFrets.Text = "";
             txtCharter.Text = "";
+            txtAlbumTrack.Text = "";
+            txtPlaylistTrack.Text = "";
             cboBandDifficulty.SelectedIndex = 0;
             cboBassDifficulty.SelectedIndex = 0;
             cboBassGHLDifficulty.SelectedIndex = 0;
@@ -355,55 +459,36 @@ namespace WindowsFormsApp1
             cboguitarDifficulty.SelectedIndex = 0;
             cboGuitarGHLDifficulty.SelectedIndex = 0;
             cboKeysDifficulty.SelectedIndex = 0;
-            isNew = true;
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        private string validate()
         {
-            btnSave.PerformClick();
-        }
-
-        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog f = new SaveFileDialog();
-            DialogResult r;
-            r = f.ShowDialog();
-            f.AddExtension = true;
-            f.DefaultExt = ".ini";
-            f.Filter = "CH INI Configuration Files |*.ini";
-            if (r == DialogResult.OK)
+            string errMsg = "";
+            if (txtSongName.Text == "")
             {
-                path = f.FileName;
-                writeFile(path);
+                errMsg = "Song Title is Required!";
             }
+            if (txtArtist.Text == "")
+            {
+                errMsg = "Artist Name is Required!";
+            }
+            return errMsg;
         }
 
-        private void writeFile(string path)
+        private void txtIcon_TextChanged(object sender, EventArgs e)
         {
-            using (System.IO.StreamWriter outputFile = new StreamWriter(path, false))
-            {
-                outputFile.WriteLine("[Song]");
-                outputFile.WriteLine("name = " + txtSongName.Text);
-                outputFile.WriteLine("artist = " + txtArtist.Text);
-                outputFile.WriteLine("album = " + txtAlbum.Text);
-                outputFile.WriteLine("genre = " + txtGenre.Text);
-                outputFile.WriteLine("year = " + txtYear.Text);
-                outputFile.WriteLine("song_length = " + txtSongLength.Text);
-                outputFile.WriteLine("count = " + txtCount.Text);
-                outputFile.WriteLine("diff_band = " + cboBandDifficulty.SelectedValue);
-                outputFile.WriteLine("diff_guitar = " + cboguitarDifficulty.SelectedValue);
-                outputFile.WriteLine("diff_bass = " + cboBassDifficulty.SelectedValue);
-                outputFile.WriteLine("diff_drums = " + cboDrumsDifficulty.SelectedValue);
-                outputFile.WriteLine("diff_keys = " + cboKeysDifficulty.SelectedValue);
-                outputFile.WriteLine("diff_guitarghl = " + cboGuitarGHLDifficulty.SelectedValue);
-                outputFile.WriteLine("diff_bassghl = " + cboBassGHLDifficulty.SelectedValue);
-                outputFile.WriteLine("preview_start_time = " + txtPreviewStartTime.Text);
-                outputFile.WriteLine("frets = " + txtFrets.Text);
-                outputFile.WriteLine("charter = " + txtCharter.Text);
-                outputFile.WriteLine("icon = " + txtIcon.Text);
-
+            if (txtIcon.Text.EndsWith(".png") || txtIcon.Text.EndsWith(".jpg"))
+                {
+                txtIcon.Text = txtIcon.Text.Substring(0, txtIcon.Text.Length - 4);
+                MessageBox.Show("Icons should not have file extensions after their names.  This has been removed for you");
             }
-            MessageBox.Show("ini file saved successfully!", "Success!");
+
+        }
+
+        private void timeCalcToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTimeCalculator t = new frmTimeCalculator();
+            t.Show();
         }
     }
 

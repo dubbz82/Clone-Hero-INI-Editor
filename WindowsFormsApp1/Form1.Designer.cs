@@ -32,6 +32,8 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSongName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,8 +73,13 @@
             this.txtIcon = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.txtCount = new System.Windows.Forms.TextBox();
-            this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPlaylistTrack = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.txtAlbumTrack = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtComments = new System.Windows.Forms.TextBox();
+            this.timeCalcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -81,10 +88,11 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem});
+            this.openToolStripMenuItem,
+            this.timeCalcToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(787, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(762, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -103,16 +111,30 @@
             // openToolStripMenuItem1
             // 
             this.openToolStripMenuItem1.Name = "openToolStripMenuItem1";
-            this.openToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem1.Size = new System.Drawing.Size(114, 22);
             this.openToolStripMenuItem1.Text = "Open";
             this.openToolStripMenuItem1.Click += new System.EventHandler(this.openToolStripMenuItem1_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.saveAsToolStripMenuItem.Text = "Save As";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // label1
             // 
@@ -414,7 +436,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(646, 360);
+            this.btnSave.Location = new System.Drawing.Point(646, 426);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 26;
@@ -437,6 +459,7 @@
             this.txtIcon.Name = "txtIcon";
             this.txtIcon.Size = new System.Drawing.Size(222, 20);
             this.txtIcon.TabIndex = 28;
+            this.txtIcon.TextChanged += new System.EventHandler(this.txtIcon_TextChanged);
             // 
             // label19
             // 
@@ -454,25 +477,74 @@
             this.txtCount.Size = new System.Drawing.Size(222, 20);
             this.txtCount.TabIndex = 30;
             // 
-            // newToolStripMenuItem
+            // label3
             // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.newToolStripMenuItem.Text = "New";
-            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 377);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(70, 13);
+            this.label3.TabIndex = 1000000000;
+            this.label3.Text = "Playlist Track";
             // 
-            // saveAsToolStripMenuItem
+            // txtPlaylistTrack
             // 
-            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.saveAsToolStripMenuItem.Text = "Save As";
-            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            this.txtPlaylistTrack.Location = new System.Drawing.Point(94, 374);
+            this.txtPlaylistTrack.Name = "txtPlaylistTrack";
+            this.txtPlaylistTrack.Size = new System.Drawing.Size(47, 20);
+            this.txtPlaylistTrack.TabIndex = 1000000001;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(19, 426);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(67, 13);
+            this.label20.TabIndex = 1000000002;
+            this.label20.Text = "Album Track";
+            // 
+            // txtAlbumTrack
+            // 
+            this.txtAlbumTrack.Location = new System.Drawing.Point(92, 423);
+            this.txtAlbumTrack.Name = "txtAlbumTrack";
+            this.txtAlbumTrack.Size = new System.Drawing.Size(47, 20);
+            this.txtAlbumTrack.TabIndex = 1000000003;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(217, 374);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(56, 13);
+            this.label21.TabIndex = 1000000004;
+            this.label21.Text = "Comments";
+            // 
+            // txtComments
+            // 
+            this.txtComments.AcceptsReturn = true;
+            this.txtComments.Location = new System.Drawing.Point(279, 371);
+            this.txtComments.Multiline = true;
+            this.txtComments.Name = "txtComments";
+            this.txtComments.Size = new System.Drawing.Size(345, 78);
+            this.txtComments.TabIndex = 1000000005;
+            // 
+            // timeCalcToolStripMenuItem
+            // 
+            this.timeCalcToolStripMenuItem.Name = "timeCalcToolStripMenuItem";
+            this.timeCalcToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.timeCalcToolStripMenuItem.Text = "Time Calc";
+            this.timeCalcToolStripMenuItem.Click += new System.EventHandler(this.timeCalcToolStripMenuItem_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 401);
+            this.ClientSize = new System.Drawing.Size(762, 461);
+            this.Controls.Add(this.txtComments);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.txtAlbumTrack);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.txtPlaylistTrack);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCount);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.txtIcon);
@@ -561,6 +633,13 @@
         private System.Windows.Forms.TextBox txtCount;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtPlaylistTrack;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtAlbumTrack;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox txtComments;
+        private System.Windows.Forms.ToolStripMenuItem timeCalcToolStripMenuItem;
     }
 }
 
