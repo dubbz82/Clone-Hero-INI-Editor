@@ -245,6 +245,10 @@ namespace WindowsFormsApp1
                     {
                         txtPlaylistTrack.Text = line.Replace("playlist_track = ", "");
                     }
+                    if (line.StartsWith("track = "))
+                    {
+                        txtAlbumTrack.Text = line.Replace("track = ", "");
+                    }
                     if (line.StartsWith("album_track = "))
                     {
                         txtAlbumTrack.Text = line.Replace("album_track = ", "");
