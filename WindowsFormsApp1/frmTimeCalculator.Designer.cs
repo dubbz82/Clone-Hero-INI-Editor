@@ -46,14 +46,14 @@
             this.button1.Location = new System.Drawing.Point(196, 185);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 100;
             this.button1.Text = "&Calculate";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtHours
             // 
-            this.txtHours.Location = new System.Drawing.Point(132, 46);
+            this.txtHours.Location = new System.Drawing.Point(106, 47);
             this.txtHours.Name = "txtHours";
             this.txtHours.Size = new System.Drawing.Size(32, 20);
             this.txtHours.TabIndex = 1;
@@ -62,78 +62,78 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(129, 30);
+            this.label1.Location = new System.Drawing.Point(103, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 101;
             this.label1.Text = "Hours";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(207, 30);
+            this.label2.Location = new System.Drawing.Point(181, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 102;
             this.label2.Text = "Minutes";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(284, 30);
+            this.label3.Location = new System.Drawing.Point(258, 31);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 103;
             this.label3.Text = "Seconds";
             // 
             // txtMinutes
             // 
-            this.txtMinutes.Location = new System.Drawing.Point(210, 46);
+            this.txtMinutes.Location = new System.Drawing.Point(184, 47);
             this.txtMinutes.Name = "txtMinutes";
             this.txtMinutes.Size = new System.Drawing.Size(32, 20);
-            this.txtMinutes.TabIndex = 5;
+            this.txtMinutes.TabIndex = 2;
             this.txtMinutes.TextChanged += new System.EventHandler(this.txtMinutes_TextChanged);
             // 
             // txtSeconds
             // 
-            this.txtSeconds.Location = new System.Drawing.Point(287, 46);
+            this.txtSeconds.Location = new System.Drawing.Point(261, 47);
             this.txtSeconds.Name = "txtSeconds";
             this.txtSeconds.Size = new System.Drawing.Size(32, 20);
-            this.txtSeconds.TabIndex = 6;
+            this.txtSeconds.TabIndex = 3;
             this.txtSeconds.TextChanged += new System.EventHandler(this.txtSeconds_TextChanged);
             // 
             // txtOutput
             // 
-            this.txtOutput.Location = new System.Drawing.Point(185, 142);
+            this.txtOutput.Location = new System.Drawing.Point(184, 140);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.ReadOnly = true;
             this.txtOutput.Size = new System.Drawing.Size(100, 20);
-            this.txtOutput.TabIndex = 7;
+            this.txtOutput.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(207, 116);
+            this.label4.Location = new System.Drawing.Point(193, 115);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 13);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 105;
             this.label4.Text = "Total Milliseconds";
             // 
             // txtMilliseconds
             // 
-            this.txtMilliseconds.Location = new System.Drawing.Point(366, 46);
+            this.txtMilliseconds.Location = new System.Drawing.Point(340, 47);
             this.txtMilliseconds.Name = "txtMilliseconds";
             this.txtMilliseconds.Size = new System.Drawing.Size(32, 20);
-            this.txtMilliseconds.TabIndex = 9;
+            this.txtMilliseconds.TabIndex = 4;
             this.txtMilliseconds.TextChanged += new System.EventHandler(this.txtMilliseconds_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(363, 30);
+            this.label5.Location = new System.Drawing.Point(337, 31);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 13);
-            this.label5.TabIndex = 10;
+            this.label5.TabIndex = 104;
             this.label5.Text = "Milliseconds";
             // 
             // frmTimeCalculator

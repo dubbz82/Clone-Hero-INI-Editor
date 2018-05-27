@@ -77,9 +77,14 @@ namespace WindowsFormsApp1
                     {
                         txtSongName.Text = line.Replace("name = ", "");
                     }
-                    if (line.StartsWith("frets = "))
+                    //charter and frets are really one in the same....
+                    if (line.StartsWith("charter = "))
                     {
-                        txtFrets.Text = line.Replace("frets = ", "");
+                        txtCharter.Text = line.Replace("charter = ", "");
+                    }
+                    if (line.StartsWith("frets = ") && txtCharter.Text == "")
+                    {
+                        txtCharter.Text = line.Replace("frets = ", "");
                     }
                     if (line.StartsWith("icon = "))
                     {
@@ -233,10 +238,7 @@ namespace WindowsFormsApp1
 
                         txtPreviewStartTime.Text = line.Replace("preview_start_time = ", "");
                     }
-                    if (line.StartsWith("charter = "))
-                    {
-                        txtCharter.Text = line.Replace("charter = ", "");
-                    }
+                   
                     if (line.StartsWith("count = "))
                     {
                         txtCount.Text = line.Replace("count = ", "");
@@ -271,6 +273,7 @@ namespace WindowsFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             isNew = true; //by default.  If a file is opened later, this will get swapped..
             DataTable dt = new DataTable();
             dt.Columns.Add("Name");
@@ -356,15 +359,6 @@ namespace WindowsFormsApp1
 
         }
 
-        private void txtCharter_TextChanged(object sender, EventArgs e)
-        {
-            txtFrets.Text = txtCharter.Text;
-        }
-
-        private void txtFrets_TextChanged(object sender, EventArgs e)
-        {
-            txtCharter.Text = txtFrets.Text;
-        }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -429,7 +423,7 @@ namespace WindowsFormsApp1
                 outputFile.WriteLine("diff_bassghl = " + cboBassGHLDifficulty.SelectedValue);
 
                 outputFile.WriteLine("preview_start_time = " + txtPreviewStartTime.Text);
-                outputFile.WriteLine("frets = " + txtFrets.Text);
+                outputFile.WriteLine("frets = " + txtCharter.Text);
                 outputFile.WriteLine("charter = " + txtCharter.Text);
                 outputFile.WriteLine("icon = " + txtIcon.Text);
                 outputFile.WriteLine("album_track = " + txtAlbumTrack.Text);
@@ -452,7 +446,6 @@ namespace WindowsFormsApp1
             txtCount.Text = "";
             txtPreviewStartTime.Text = "";
             txtIcon.Text = "";
-            txtFrets.Text = "";
             txtCharter.Text = "";
             txtAlbumTrack.Text = "";
             txtPlaylistTrack.Text = "";
