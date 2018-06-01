@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1
@@ -486,6 +480,71 @@ namespace WindowsFormsApp1
         {
             frmTimeCalculator t = new frmTimeCalculator();
             t.Show();
+        }
+
+        private void openMp3oggToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //open the media file and read in ID3 tags, populate accordingly.
+            
+            
+            OpenFileDialog f = new OpenFileDialog();
+            f.Filter = "OGG Audio Files |*.ogg|MP3 Audio Files |*.mp3";
+            f.Multiselect = false;
+            DialogResult r = f.ShowDialog();
+            if (r == DialogResult.OK)
+            {
+                string audiopath = f.FileName;
+                //ID3 library from https://www.nuget.org/packages/taglib
+                TagLib.File tag = TagLib.File.Create(audiopath);
+
+                if (tag.Tag.Title + "" != "")
+                {
+                    clearData(); //only clear data if there's actually tags to update..presumption is that the track will have a title.
+                    isNew = true;
+
+                }
+                else
+                {
+                    MessageBox.Show("No data could be found!  Please fill this data in manually!", "Not found!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                foreach (var artist in tag.Tag.Performers)
+                {
+                    if (txtArtist.Text == "")
+                    {
+                        txtArtist.Text = artist;
+                    }
+                    else
+                    {
+                        txtArtist.Text = txtArtist.Text + ", " + artist;
+                    }
+                }
+
+                txtAlbum.Text = tag.Tag.Album + "";
+                foreach (var genre in tag.Tag.Genres)
+                {
+                    if (txtGenre.Text == "")
+                    {
+                        txtGenre.Text = genre;
+                    }
+                    else
+                    {
+                        txtGenre.Text = txtGenre.Text + ", " + genre;
+                    }
+                }
+                txtAlbumTrack.Text = tag.Tag.Track + "";
+                txtSongName.Text = tag.Tag.Title + "";
+                txtYear.Text = tag.Tag.Year.ToString();
+                if (txtAlbumTrack.Text == "0")
+                {
+                    txtAlbumTrack.Text = "";
+                }
+                if (txtYear.Text == "0")
+                {
+                    txtYear.Text = "";
+                }
+                txtSongLength.Text = tag.Properties.Duration.TotalMilliseconds.ToString();
+            }
         }
     }
 
