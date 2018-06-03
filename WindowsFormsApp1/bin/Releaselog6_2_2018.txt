@@ -1,0 +1,1 @@
+C:\Users\Jeremiah\Downloads\Windows (64)\Songs\Vortex Hero - Copy\Tier 29 - Annihilation of the Universe\Vektor - Destroying the Cosmos\song.ini Old value: artist=Vektor New value: artist = asdfasdff

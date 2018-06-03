@@ -82,6 +82,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.openMp3oggToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bulkEditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -94,7 +95,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openToolStripMenuItem,
-            this.timeCalcToolStripMenuItem});
+            this.timeCalcToolStripMenuItem,
+            this.bulkEditToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(929, 24);
@@ -580,6 +582,13 @@
             this.openMp3oggToolStripMenuItem.Text = "Open mp3/ogg";
             this.openMp3oggToolStripMenuItem.Click += new System.EventHandler(this.openMp3oggToolStripMenuItem_Click);
             // 
+            // bulkEditToolStripMenuItem
+            // 
+            this.bulkEditToolStripMenuItem.Name = "bulkEditToolStripMenuItem";
+            this.bulkEditToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.bulkEditToolStripMenuItem.Text = "Bulk Edit";
+            this.bulkEditToolStripMenuItem.Click += new System.EventHandler(this.bulkEditToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -596,7 +605,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Clone Hero INI Editor v 0.5.0";
+            this.Text = "Clone Hero INI Editor v 0.6.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -671,6 +680,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ToolStripMenuItem openMp3oggToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bulkEditToolStripMenuItem;
     }
 }
 

@@ -546,6 +546,17 @@ namespace WindowsFormsApp1
                 txtSongLength.Text = tag.Properties.Duration.TotalMilliseconds.ToString();
             }
         }
+
+        private void bulkEditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show("This will allow for bulk editing of numerous ini's contained within a folder structure.  This will apply changes that cannot easily be undone.  Please make sure to back up your files before continuing.  Do you want to continue?", "Warning", MessageBoxButtons.OKCancel);
+            if (r == DialogResult.OK)
+            {
+                frmBulkEdit b = new frmBulkEdit();
+                b.ShowDialog();
+            }
+            
+        }
     }
 
 }
