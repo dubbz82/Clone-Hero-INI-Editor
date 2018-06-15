@@ -399,15 +399,31 @@ namespace WindowsFormsApp1
                 {
                     outputFile.WriteLine(";" + str);
                 }
-
+                //required fields.
                 outputFile.WriteLine("name = " + txtSongName.Text);
                 outputFile.WriteLine("artist = " + txtArtist.Text);
-                outputFile.WriteLine("album = " + txtAlbum.Text);
-                outputFile.WriteLine("genre = " + txtGenre.Text);
-                outputFile.WriteLine("year = " + txtYear.Text);
-                outputFile.WriteLine("song_length = " + txtSongLength.Text);
-                outputFile.WriteLine("count = " + txtCount.Text);
-
+                //the next several are optional and may not exist.  skip over them if blank...
+                if (txtAlbum.Text != "")
+                {
+                    outputFile.WriteLine("album = " + txtAlbum.Text);
+                }
+                if (txtGenre.Text != "")
+                {
+                    outputFile.WriteLine("genre = " + txtGenre.Text);
+                }
+                if (txtYear.Text != "")
+                {
+                    outputFile.WriteLine("year = " + txtYear.Text);
+                }
+                if (txtSongLength.Text != "")
+                {
+                    outputFile.WriteLine("song_length = " + txtSongLength.Text);
+                }
+                if (txtCount.Text != "")
+                {
+                    outputFile.WriteLine("count = " + txtCount.Text);
+                }
+                //difficulties.  These will always be written regardless, as they will always have some value.
                 outputFile.WriteLine("diff_band = " + cboBandDifficulty.SelectedValue);
                 outputFile.WriteLine("diff_guitar = " + cboguitarDifficulty.SelectedValue);
                 outputFile.WriteLine("diff_bass = " + cboBassDifficulty.SelectedValue);
@@ -415,15 +431,29 @@ namespace WindowsFormsApp1
                 outputFile.WriteLine("diff_keys = " + cboKeysDifficulty.SelectedValue);
                 outputFile.WriteLine("diff_guitarghl = " + cboGuitarGHLDifficulty.SelectedValue);
                 outputFile.WriteLine("diff_bassghl = " + cboBassGHLDifficulty.SelectedValue);
-
-                outputFile.WriteLine("preview_start_time = " + txtPreviewStartTime.Text);
-                outputFile.WriteLine("frets = " + txtCharter.Text);
-                outputFile.WriteLine("charter = " + txtCharter.Text);
-                outputFile.WriteLine("icon = " + txtIcon.Text);
-                outputFile.WriteLine("album_track = " + txtAlbumTrack.Text);
-                outputFile.WriteLine("playlist_track = " + txtPlaylistTrack.Text);
-
-
+                //some more optional stuff.
+                if (txtPreviewStartTime.Text != "")
+                {
+                    outputFile.WriteLine("preview_start_time = " + txtPreviewStartTime.Text);
+                }
+                if (txtCharter.Text != "")
+                {
+                    outputFile.WriteLine("frets = " + txtCharter.Text);
+                    outputFile.WriteLine("charter = " + txtCharter.Text);
+                }
+                if (txtIcon.Text != "")
+                {
+                    outputFile.WriteLine("icon = " + txtIcon.Text);
+                }
+                if (txtAlbumTrack.Text != "")
+                {
+                    outputFile.WriteLine("album_track = " + txtAlbumTrack.Text);
+                }
+                if (txtPlaylistTrack.Text != "")
+                {
+                    outputFile.WriteLine("playlist_track = " + txtPlaylistTrack.Text);
+                }
+                
             }
             MessageBox.Show("ini file saved successfully!", "Success!");
         }
