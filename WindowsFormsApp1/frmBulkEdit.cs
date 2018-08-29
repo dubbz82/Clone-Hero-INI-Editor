@@ -99,7 +99,7 @@ namespace WindowsFormsApp1
             // First, process all the files directly under this folder
             try
             {
-                files = root.GetFiles("*.ini");
+                files = root.GetFiles("song.ini");
             }
             // This is thrown if even one of the files requires permissions greater
             // than the application provides.
@@ -153,6 +153,11 @@ namespace WindowsFormsApp1
 
                     if (hasChanges == true)
                     {
+                        System.IO.File.WriteAllText(fi.FullName, fileContents.ToString());
+                    }
+                    else
+                    {
+                        fileContents.AppendLine(selectedtag + selectedval);
                         System.IO.File.WriteAllText(fi.FullName, fileContents.ToString());
                     }
                    
