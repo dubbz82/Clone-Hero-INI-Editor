@@ -306,7 +306,18 @@ namespace WindowsFormsApp1
             cboKeysDifficulty.DisplayMember = "Name";
             cboKeysDifficulty.ValueMember = "Value";
 
-
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.Icon))
+            {
+                txtIcon.Text = Properties.Settings.Default.Icon;
+            }
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.Charter))
+            {
+                txtCharter.Text = Properties.Settings.Default.Charter;
+            }
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.Charter))
+            {
+                txtGenre.Text = Properties.Settings.Default.Genre;
+            }
         }
 
         private void cboBandDifficulty_SelectedIndexChanged(object sender, EventArgs e)
@@ -480,6 +491,18 @@ namespace WindowsFormsApp1
             cboguitarDifficulty.SelectedIndex = 0;
             cboGuitarGHLDifficulty.SelectedIndex = 0;
             cboKeysDifficulty.SelectedIndex = 0;
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.Icon))
+            {
+                txtIcon.Text = Properties.Settings.Default.Icon;
+            }
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.Charter))
+            {
+                txtCharter.Text = Properties.Settings.Default.Charter;
+            }
+            if (!String.IsNullOrEmpty(Properties.Settings.Default.Genre))
+            {
+                txtCharter.Text = Properties.Settings.Default.Genre;
+            }
         }
 
         private string validate()
@@ -586,6 +609,27 @@ namespace WindowsFormsApp1
                 b.ShowDialog();
             }
             
+        }
+
+        private void btnSaveCharter_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Charter = txtCharter.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Charter/Fretter Saved Successfully!", "Saved Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnSaveIcon_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Icon = txtIcon.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Icon Saved Successfully!", "Saved Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnGenreSave_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Genre = txtGenre.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Genre Saved Successfully!", "Saved Successfully!", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 

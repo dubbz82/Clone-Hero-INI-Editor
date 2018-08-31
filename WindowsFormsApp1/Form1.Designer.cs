@@ -31,10 +31,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.openMp3oggToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timeCalcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bulkEditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSongName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -81,8 +83,9 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.openMp3oggToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bulkEditToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSaveCharter = new System.Windows.Forms.Button();
+            this.btnSaveIcon = new System.Windows.Forms.Button();
+            this.btnGenreSave = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -123,6 +126,13 @@
             this.openToolStripMenuItem1.Text = "Open INI";
             this.openToolStripMenuItem1.Click += new System.EventHandler(this.openToolStripMenuItem1_Click);
             // 
+            // openMp3oggToolStripMenuItem
+            // 
+            this.openMp3oggToolStripMenuItem.Name = "openMp3oggToolStripMenuItem";
+            this.openMp3oggToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.openMp3oggToolStripMenuItem.Text = "Open mp3/ogg";
+            this.openMp3oggToolStripMenuItem.Click += new System.EventHandler(this.openMp3oggToolStripMenuItem_Click);
+            // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
@@ -151,6 +161,13 @@
             this.timeCalcToolStripMenuItem.Text = "Time Calc";
             this.timeCalcToolStripMenuItem.Click += new System.EventHandler(this.timeCalcToolStripMenuItem_Click);
             // 
+            // bulkEditToolStripMenuItem
+            // 
+            this.bulkEditToolStripMenuItem.Name = "bulkEditToolStripMenuItem";
+            this.bulkEditToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+            this.bulkEditToolStripMenuItem.Text = "Bulk Edit";
+            this.bulkEditToolStripMenuItem.Click += new System.EventHandler(this.bulkEditToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -164,7 +181,7 @@
             // 
             this.txtSongName.Location = new System.Drawing.Point(92, 14);
             this.txtSongName.Name = "txtSongName";
-            this.txtSongName.Size = new System.Drawing.Size(332, 20);
+            this.txtSongName.Size = new System.Drawing.Size(326, 20);
             this.txtSongName.TabIndex = 1;
             // 
             // label2
@@ -180,7 +197,7 @@
             // 
             this.txtArtist.Location = new System.Drawing.Point(92, 52);
             this.txtArtist.Name = "txtArtist";
-            this.txtArtist.Size = new System.Drawing.Size(332, 20);
+            this.txtArtist.Size = new System.Drawing.Size(326, 20);
             this.txtArtist.TabIndex = 2;
             // 
             // label4
@@ -196,7 +213,7 @@
             // 
             this.txtGenre.Location = new System.Drawing.Point(95, 46);
             this.txtGenre.Name = "txtGenre";
-            this.txtGenre.Size = new System.Drawing.Size(223, 20);
+            this.txtGenre.Size = new System.Drawing.Size(171, 20);
             this.txtGenre.TabIndex = 44;
             // 
             // label5
@@ -244,7 +261,7 @@
             // 
             this.txtAlbum.Location = new System.Drawing.Point(95, 19);
             this.txtAlbum.Name = "txtAlbum";
-            this.txtAlbum.Size = new System.Drawing.Size(323, 20);
+            this.txtAlbum.Size = new System.Drawing.Size(274, 20);
             this.txtAlbum.TabIndex = 3;
             // 
             // label8
@@ -260,7 +277,7 @@
             // 
             this.txtCharter.Location = new System.Drawing.Point(95, 80);
             this.txtCharter.Name = "txtCharter";
-            this.txtCharter.Size = new System.Drawing.Size(323, 20);
+            this.txtCharter.Size = new System.Drawing.Size(274, 20);
             this.txtCharter.TabIndex = 6;
             // 
             // label9
@@ -454,7 +471,7 @@
             // 
             this.txtIcon.Location = new System.Drawing.Point(42, 30);
             this.txtIcon.Name = "txtIcon";
-            this.txtIcon.Size = new System.Drawing.Size(108, 20);
+            this.txtIcon.Size = new System.Drawing.Size(70, 20);
             this.txtIcon.TabIndex = 15;
             this.txtIcon.TextChanged += new System.EventHandler(this.txtIcon_TextChanged);
             // 
@@ -539,6 +556,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnGenreSave);
+            this.groupBox4.Controls.Add(this.btnSaveCharter);
             this.groupBox4.Controls.Add(this.txtAlbum);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.txtGenre);
@@ -558,6 +577,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnSaveIcon);
             this.groupBox5.Controls.Add(this.txtIcon);
             this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Controls.Add(this.txtCount);
@@ -575,19 +595,35 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Optional Fields";
             // 
-            // openMp3oggToolStripMenuItem
+            // btnSaveCharter
             // 
-            this.openMp3oggToolStripMenuItem.Name = "openMp3oggToolStripMenuItem";
-            this.openMp3oggToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.openMp3oggToolStripMenuItem.Text = "Open mp3/ogg";
-            this.openMp3oggToolStripMenuItem.Click += new System.EventHandler(this.openMp3oggToolStripMenuItem_Click);
+            this.btnSaveCharter.Location = new System.Drawing.Point(376, 78);
+            this.btnSaveCharter.Name = "btnSaveCharter";
+            this.btnSaveCharter.Size = new System.Drawing.Size(42, 23);
+            this.btnSaveCharter.TabIndex = 110;
+            this.btnSaveCharter.Text = "Save";
+            this.btnSaveCharter.UseVisualStyleBackColor = true;
+            this.btnSaveCharter.Click += new System.EventHandler(this.btnSaveCharter_Click);
             // 
-            // bulkEditToolStripMenuItem
+            // btnSaveIcon
             // 
-            this.bulkEditToolStripMenuItem.Name = "bulkEditToolStripMenuItem";
-            this.bulkEditToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-            this.bulkEditToolStripMenuItem.Text = "Bulk Edit";
-            this.bulkEditToolStripMenuItem.Click += new System.EventHandler(this.bulkEditToolStripMenuItem_Click);
+            this.btnSaveIcon.Location = new System.Drawing.Point(119, 27);
+            this.btnSaveIcon.Name = "btnSaveIcon";
+            this.btnSaveIcon.Size = new System.Drawing.Size(42, 23);
+            this.btnSaveIcon.TabIndex = 125;
+            this.btnSaveIcon.Text = "Save";
+            this.btnSaveIcon.UseVisualStyleBackColor = true;
+            this.btnSaveIcon.Click += new System.EventHandler(this.btnSaveIcon_Click);
+            // 
+            // btnGenreSave
+            // 
+            this.btnGenreSave.Location = new System.Drawing.Point(276, 44);
+            this.btnGenreSave.Name = "btnGenreSave";
+            this.btnGenreSave.Size = new System.Drawing.Size(42, 23);
+            this.btnGenreSave.TabIndex = 111;
+            this.btnGenreSave.Text = "Save";
+            this.btnGenreSave.UseVisualStyleBackColor = true;
+            this.btnGenreSave.Click += new System.EventHandler(this.btnGenreSave_Click);
             // 
             // Form1
             // 
@@ -605,7 +641,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Clone Hero INI Editor v 0.6.1";
+            this.Text = "Clone Hero INI Editor v 0.7.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -681,6 +717,9 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ToolStripMenuItem openMp3oggToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bulkEditToolStripMenuItem;
+        private System.Windows.Forms.Button btnSaveCharter;
+        private System.Windows.Forms.Button btnSaveIcon;
+        private System.Windows.Forms.Button btnGenreSave;
     }
 }
 

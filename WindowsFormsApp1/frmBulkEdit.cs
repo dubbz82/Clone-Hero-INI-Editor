@@ -62,10 +62,19 @@ namespace WindowsFormsApp1
             cboNewValue.ValueMember = "Value";
 
             FolderBrowserDialog d = new FolderBrowserDialog();
+            d.SelectedPath = Properties.Settings.Default.Folder_Path;
+
             DialogResult r = d.ShowDialog();
             if (r == DialogResult.OK)
             {
                 path = d.SelectedPath;
+                if (!String.IsNullOrEmpty(Properties.Settings.Default.Folder_Path))
+                {
+                    Properties.Settings.Default.Folder_Path = path;
+                }
+
+                Properties.Settings.Default.Folder_Path = path;
+                Properties.Settings.Default.Save();
 
             }
             else
