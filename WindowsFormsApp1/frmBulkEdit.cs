@@ -146,12 +146,28 @@ namespace WindowsFormsApp1
                         string tmp2 = "";
                         tmp = txtline.Replace(" ", "");
                         tmp2 = selectedtag.Replace(" ", "");
-                        if (tmp.Contains(tmp2))
+                        bool isCharter;
+                        if (tmp2 == "frets=" && tmp.Contains("charter="))
+                        {
+                            isCharter = true;
+                        }
+                        else
+                        {
+                            isCharter = false;
+                        }
+                        if (tmp.Contains(tmp2) || isCharter == true)
                         {
                             hasChanges = true;
-                            fileContents.AppendLine(selectedtag + selectedval);
-                            //also log changes...
-                            changeTracking.Append(fi.FullName + "| Old value: " + txtline + "| New value: " + selectedtag + selectedval + Environment.NewLine);
+                            if (isCharter == true)
+                            {
+                                fileContents.AppendLine("charter=" + selectedval);
+                            }
+                           else
+                            {
+                                fileContents.AppendLine(selectedtag + selectedval);
+                                //also log changes...
+                                changeTracking.Append(fi.FullName + "| Old value: " + txtline + "| New value: " + selectedtag + selectedval + Environment.NewLine);
+                            }
                         }
                         else
                         {
@@ -160,12 +176,15 @@ namespace WindowsFormsApp1
 
                     }
 
+
+
                     if (hasChanges == true)
                     {
                         System.IO.File.WriteAllText(fi.FullName, fileContents.ToString());
                     }
                     else
                     {
+                        
                         fileContents.AppendLine(selectedtag + selectedval);
                         System.IO.File.WriteAllText(fi.FullName, fileContents.ToString());
                     }
