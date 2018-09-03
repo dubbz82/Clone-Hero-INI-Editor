@@ -283,26 +283,68 @@ namespace WindowsFormsApp1
                     dt.Rows.Add(i.ToString(), i);
                 }
             }
+            DataTable dt2 = new DataTable();
+            DataTable dt3 = new DataTable();
+            DataTable dt4 = new DataTable();
+            DataTable dt5 = new DataTable();
+            DataTable dt6 = new DataTable();
+            DataTable dt7 = new DataTable();
+            dt2.Columns.Add("Name");
+            dt2.Columns.Add("Value");
+            dt3.Columns.Add("Name");
+            dt3.Columns.Add("Value");
+            dt4.Columns.Add("Name");
+            dt4.Columns.Add("Value");
+            dt5.Columns.Add("Name");
+            dt5.Columns.Add("Value");
+            dt6.Columns.Add("Name");
+            dt6.Columns.Add("Value");
+            dt7.Columns.Add("Name");
+            dt7.Columns.Add("Value");
+            foreach (DataRow dr in dt.Rows)
+            {
+                    dt2.Rows.Add(dr.ItemArray);
+            }
+            foreach (DataRow dr in dt.Rows)
+            {
+                dt3.Rows.Add(dr.ItemArray);
+            }
+            foreach (DataRow dr in dt.Rows)
+            {
+                dt4.Rows.Add(dr.ItemArray);
+            }
+            foreach (DataRow dr in dt.Rows)
+            {
+                dt5.Rows.Add(dr.ItemArray);
+            }
+            foreach (DataRow dr in dt.Rows)
+            {
+                dt6.Rows.Add(dr.ItemArray);
+            }
+            foreach (DataRow dr in dt.Rows)
+            {
+                dt7.Rows.Add(dr.ItemArray);
+            }
 
             cboBandDifficulty.DataSource = dt;
             cboBandDifficulty.DisplayMember = "Name";
             cboBandDifficulty.ValueMember = "Value";
-            cboBassDifficulty.DataSource = dt;
+            cboBassDifficulty.DataSource = dt2;
             cboBassDifficulty.DisplayMember = "Name";
             cboBassDifficulty.ValueMember = "Value";
-            cboBassGHLDifficulty.DataSource = dt;
+            cboBassGHLDifficulty.DataSource = dt3;
             cboBassGHLDifficulty.DisplayMember = "Name";
             cboBassGHLDifficulty.ValueMember = "Value";
-            cboDrumsDifficulty.DataSource = dt;
+            cboDrumsDifficulty.DataSource = dt4;
             cboDrumsDifficulty.DisplayMember = "Name";
             cboDrumsDifficulty.ValueMember = "Value";
-            cboguitarDifficulty.DataSource = dt;
+            cboguitarDifficulty.DataSource = dt5;
             cboguitarDifficulty.DisplayMember = "Name";
             cboguitarDifficulty.ValueMember = "Value";
-            cboGuitarGHLDifficulty.DataSource = dt;
+            cboGuitarGHLDifficulty.DataSource = dt6;
             cboGuitarGHLDifficulty.DisplayMember = "Name";
             cboGuitarGHLDifficulty.ValueMember = "Value";
-            cboKeysDifficulty.DataSource = dt;
+            cboKeysDifficulty.DataSource = dt7;
             cboKeysDifficulty.DisplayMember = "Name";
             cboKeysDifficulty.ValueMember = "Value";
 
@@ -327,8 +369,10 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string err = validate();
-            if (err == "")
+            string err = validateRequiredFields();
+            bool varSuggestedFields = validateSuggestedFields();
+
+            if (err == "" && varSuggestedFields == true)
             {
                 if (isNew == false)
                 {
@@ -357,7 +401,11 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (varSuggestedFields == true)
+                {
+                    MessageBox.Show(err, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
            
 
@@ -378,8 +426,9 @@ namespace WindowsFormsApp1
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string err = validate();
-            if (err == "")
+            string err = validateRequiredFields();
+            bool varSuggestedFields = validateSuggestedFields();
+            if (err == "" && varSuggestedFields == true)
             {
                 SaveFileDialog f = new SaveFileDialog();
                 DialogResult r;
@@ -395,7 +444,11 @@ namespace WindowsFormsApp1
             }
             else
             {
-                MessageBox.Show(err, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (varSuggestedFields == true)
+                {
+                    MessageBox.Show(err, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                
             }
            
         }
@@ -505,7 +558,7 @@ namespace WindowsFormsApp1
             }
         }
 
-        private string validate()
+        private string validateRequiredFields()
         {
             string errMsg = "";
             if (txtSongName.Text == "")
@@ -519,6 +572,56 @@ namespace WindowsFormsApp1
             return errMsg;
         }
 
+        private bool validateSuggestedFields()
+        {
+            string suggestedFieldList = "";
+            if (txtCharter.Text == "")
+            {
+                suggestedFieldList = suggestedFieldList + "Charter/Frets" + Environment.NewLine;
+            }
+            if (txtAlbum.Text == "")
+            {
+                suggestedFieldList = suggestedFieldList + "Album" + Environment.NewLine;
+            }
+            if (txtGenre.Text == "")
+            {
+                suggestedFieldList = suggestedFieldList + "Genre" + Environment.NewLine;
+            }
+            if (txtYear.Text == "")
+            {
+                suggestedFieldList = suggestedFieldList + "Year" + Environment.NewLine;
+            }
+            if (txtIcon.Text == "")
+            {
+                suggestedFieldList = suggestedFieldList + "Icon" + Environment.NewLine;
+            }
+            if (cboguitarDifficulty.SelectedValue.ToString() == "-1")
+            {
+                suggestedFieldList = suggestedFieldList + "Difficulty - Guitar (Set as default)" + Environment.NewLine;
+            }
+            //now prompt the user if they wish to continue, if so simply return true, else return false.
+            if (suggestedFieldList != "")
+            {
+                
+                DialogResult r;
+                r = MessageBox.Show("The Following Field(s) are suggested but do not have values, or have been left at defaults!" + Environment.NewLine + suggestedFieldList + Environment.NewLine + "Do you want to Continue?", "Suggested Fields missing or default", MessageBoxButtons.YesNo);
+                if (r == DialogResult.OK)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            else
+            {
+                return true;
+            }
+         
+        }
+
         private void txtIcon_TextChanged(object sender, EventArgs e)
         {
             if (txtIcon.Text.EndsWith(".png") || txtIcon.Text.EndsWith(".jpg"))
@@ -526,6 +629,7 @@ namespace WindowsFormsApp1
                 txtIcon.Text = txtIcon.Text.Substring(0, txtIcon.Text.Length - 4);
                 MessageBox.Show("Icons should not have file extensions after their names.  This has been removed for you");
             }
+           
 
         }
 
