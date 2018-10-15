@@ -34,6 +34,12 @@
             this.txtNewValue = new System.Windows.Forms.TextBox();
             this.cboNewValue = new System.Windows.Forms.ComboBox();
             this.btnGo = new System.Windows.Forms.Button();
+            this.grpIconInformation = new System.Windows.Forms.GroupBox();
+            this.lblIconName = new System.Windows.Forms.Label();
+            this.btnUpdateIcon = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblFullFilePath = new System.Windows.Forms.Label();
+            this.grpIconInformation.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -91,11 +97,63 @@
             this.btnGo.UseVisualStyleBackColor = true;
             this.btnGo.Click += new System.EventHandler(this.btnGo_Click);
             // 
+            // grpIconInformation
+            // 
+            this.grpIconInformation.Controls.Add(this.lblFullFilePath);
+            this.grpIconInformation.Controls.Add(this.label3);
+            this.grpIconInformation.Controls.Add(this.btnUpdateIcon);
+            this.grpIconInformation.Controls.Add(this.lblIconName);
+            this.grpIconInformation.Location = new System.Drawing.Point(201, 102);
+            this.grpIconInformation.Name = "grpIconInformation";
+            this.grpIconInformation.Size = new System.Drawing.Size(271, 129);
+            this.grpIconInformation.TabIndex = 6;
+            this.grpIconInformation.TabStop = false;
+            this.grpIconInformation.Text = "Icon information";
+            this.grpIconInformation.Visible = false;
+            // 
+            // lblIconName
+            // 
+            this.lblIconName.AutoSize = true;
+            this.lblIconName.Location = new System.Drawing.Point(43, 70);
+            this.lblIconName.Name = "lblIconName";
+            this.lblIconName.Size = new System.Drawing.Size(43, 13);
+            this.lblIconName.TabIndex = 0;
+            this.lblIconName.Text = "Not Set";
+            // 
+            // btnUpdateIcon
+            // 
+            this.btnUpdateIcon.Location = new System.Drawing.Point(146, 65);
+            this.btnUpdateIcon.Name = "btnUpdateIcon";
+            this.btnUpdateIcon.Size = new System.Drawing.Size(92, 23);
+            this.btnUpdateIcon.TabIndex = 1;
+            this.btnUpdateIcon.Text = "Update icon";
+            this.btnUpdateIcon.UseVisualStyleBackColor = true;
+            this.btnUpdateIcon.Click += new System.EventHandler(this.btnUpdateIcon_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(43, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Icon Filename";
+            // 
+            // lblFullFilePath
+            // 
+            this.lblFullFilePath.AutoSize = true;
+            this.lblFullFilePath.Location = new System.Drawing.Point(43, 97);
+            this.lblFullFilePath.Name = "lblFullFilePath";
+            this.lblFullFilePath.Size = new System.Drawing.Size(0, 13);
+            this.lblFullFilePath.TabIndex = 3;
+            this.lblFullFilePath.Visible = false;
+            // 
             // frmBulkEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(743, 296);
+            this.Controls.Add(this.grpIconInformation);
             this.Controls.Add(this.btnGo);
             this.Controls.Add(this.cboNewValue);
             this.Controls.Add(this.txtNewValue);
@@ -105,6 +163,8 @@
             this.Name = "frmBulkEdit";
             this.Text = "Bulk Edit";
             this.Load += new System.EventHandler(this.frmBulkEdit_Load);
+            this.grpIconInformation.ResumeLayout(false);
+            this.grpIconInformation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +178,10 @@
         private System.Windows.Forms.TextBox txtNewValue;
         private System.Windows.Forms.ComboBox cboNewValue;
         private System.Windows.Forms.Button btnGo;
+        private System.Windows.Forms.GroupBox grpIconInformation;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnUpdateIcon;
+        private System.Windows.Forms.Label lblIconName;
+        private System.Windows.Forms.Label lblFullFilePath;
     }
 }

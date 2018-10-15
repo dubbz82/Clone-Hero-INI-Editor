@@ -82,10 +82,10 @@
             this.txtComments = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnSaveCharter = new System.Windows.Forms.Button();
-            this.btnSaveIcon = new System.Windows.Forms.Button();
             this.btnGenreSave = new System.Windows.Forms.Button();
+            this.btnSaveCharter = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnSaveIcon = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -575,6 +575,26 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Suggested Fields";
             // 
+            // btnGenreSave
+            // 
+            this.btnGenreSave.Location = new System.Drawing.Point(276, 44);
+            this.btnGenreSave.Name = "btnGenreSave";
+            this.btnGenreSave.Size = new System.Drawing.Size(42, 23);
+            this.btnGenreSave.TabIndex = 111;
+            this.btnGenreSave.Text = "Save";
+            this.btnGenreSave.UseVisualStyleBackColor = true;
+            this.btnGenreSave.Click += new System.EventHandler(this.btnGenreSave_Click);
+            // 
+            // btnSaveCharter
+            // 
+            this.btnSaveCharter.Location = new System.Drawing.Point(376, 78);
+            this.btnSaveCharter.Name = "btnSaveCharter";
+            this.btnSaveCharter.Size = new System.Drawing.Size(42, 23);
+            this.btnSaveCharter.TabIndex = 110;
+            this.btnSaveCharter.Text = "Save";
+            this.btnSaveCharter.UseVisualStyleBackColor = true;
+            this.btnSaveCharter.Click += new System.EventHandler(this.btnSaveCharter_Click);
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.btnSaveIcon);
@@ -595,16 +615,6 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Optional Fields";
             // 
-            // btnSaveCharter
-            // 
-            this.btnSaveCharter.Location = new System.Drawing.Point(376, 78);
-            this.btnSaveCharter.Name = "btnSaveCharter";
-            this.btnSaveCharter.Size = new System.Drawing.Size(42, 23);
-            this.btnSaveCharter.TabIndex = 110;
-            this.btnSaveCharter.Text = "Save";
-            this.btnSaveCharter.UseVisualStyleBackColor = true;
-            this.btnSaveCharter.Click += new System.EventHandler(this.btnSaveCharter_Click);
-            // 
             // btnSaveIcon
             // 
             this.btnSaveIcon.Location = new System.Drawing.Point(119, 27);
@@ -614,16 +624,6 @@
             this.btnSaveIcon.Text = "Save";
             this.btnSaveIcon.UseVisualStyleBackColor = true;
             this.btnSaveIcon.Click += new System.EventHandler(this.btnSaveIcon_Click);
-            // 
-            // btnGenreSave
-            // 
-            this.btnGenreSave.Location = new System.Drawing.Point(276, 44);
-            this.btnGenreSave.Name = "btnGenreSave";
-            this.btnGenreSave.Size = new System.Drawing.Size(42, 23);
-            this.btnGenreSave.TabIndex = 111;
-            this.btnGenreSave.Text = "Save";
-            this.btnGenreSave.UseVisualStyleBackColor = true;
-            this.btnGenreSave.Click += new System.EventHandler(this.btnGenreSave_Click);
             // 
             // Form1
             // 
@@ -641,7 +641,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Clone Hero INI Editor v 0.7.2";
+            this.Text = "Clone Hero INI Editor v 0.8.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

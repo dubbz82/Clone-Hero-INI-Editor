@@ -96,6 +96,16 @@ namespace WindowsFormsApp1
                 txtNewValue.Show();
                 cboNewValue.Hide();
             }
+            
+            if (cboField.SelectedValue.ToString() == "icon = ")
+            {
+                grpIconInformation.Visible = true;
+
+            }
+            else
+            {
+                grpIconInformation.Visible = false;
+            }
             selectedtag = cboField.SelectedValue.ToString();
             
         }
@@ -173,7 +183,15 @@ namespace WindowsFormsApp1
                         {
                             fileContents.AppendLine(txtline);
                         }
+                    }
+                    if (cboField.SelectedValue.ToString() == "icon = ")
+                    {
+                        //check for an icon image.  If it exists, copy it over to this path with the same filename of the icon tag and matching file extension of the original file..
+                        if (lblIconName.Text != "")
+                        {
 
+                            System.IO.File.Copy(lblFullFilePath.Text, fi.DirectoryName + "\\" + selectedval + Path.GetExtension(lblFullFilePath.Text),true); //ideally people shouldn't overwrite a file of the same name..set overwrite to true just in case...
+                        }
                     }
 
 
@@ -188,13 +206,9 @@ namespace WindowsFormsApp1
                         fileContents.AppendLine(selectedtag + selectedval);
                         System.IO.File.WriteAllText(fi.FullName, fileContents.ToString());
                     }
-                   
-
-
-
-
-
+                  
                 }
+
                 
 
                 // Now find all the subdirectories under this directory.
@@ -211,28 +225,59 @@ namespace WindowsFormsApp1
 
         private void btnGo_Click(object sender, EventArgs e)
         {
-            System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
-            WalkDirectoryTree(dir);
-            if (changeTracking.ToString() != "")
+            bool continueprocessing = true;
+             if (cboField.SelectedValue.ToString() == "icon = ")
             {
-                //write all changes to the directory where the application is running in a log file...
-                //build out a date string to give each log a unique name to prevent overwriting...
-                string dateString = DateTime.Now.Day.ToString() + "_" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString() + "_" + DateTime.Now.Hour.ToString() + "_" + DateTime.Now.Minute.ToString() + "_" + DateTime.Now.Second.ToString();
-                string logPath = Environment.CurrentDirectory + "/log " + dateString + ".txt";
-                System.IO.File.WriteAllText(logPath, changeTracking.ToString());
+                if (lblFullFilePath.Text == "")
+                {
+                    //warn user before continuing to process..
+                    DialogResult r = MessageBox.Show("You have selected to update an icon tag, however no icon file has been selected.  Are you sure you want to continue?", "Do you wish to continue?", MessageBoxButtons.YesNo);
+                    if (r == DialogResult.No)
+                    {
+                        continueprocessing = false;
+                    }
+
+                }
             }
-            MessageBox.Show("Successfully updated!");
-            this.Close();
+             if (continueprocessing == true)
+            {
+                System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(path);
+                WalkDirectoryTree(dir);
+                if (changeTracking.ToString() != "")
+                {
+                    //write all changes to the directory where the application is running in a log file...
+                    //build out a date string to give each log a unique name to prevent overwriting...
+                    string dateString = DateTime.Now.Day.ToString() + "_" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Year.ToString() + "_" + DateTime.Now.Hour.ToString() + "_" + DateTime.Now.Minute.ToString() + "_" + DateTime.Now.Second.ToString();
+                    string logPath = Environment.CurrentDirectory + "/log " + dateString + ".txt";
+                    System.IO.File.WriteAllText(logPath, changeTracking.ToString());
+                }
+                MessageBox.Show("Successfully updated!");
+                this.Close();
+            }
+           
         }
 
         private void cboNewValue_SelectedIndexChanged(object sender, EventArgs e)
         {
-            selectedval = cboNewValue.SelectedValue.ToString();
+           
         }
 
         private void txtNewValue_TextChanged(object sender, EventArgs e)
         {
             selectedval = txtNewValue.Text;
+        }
+
+        private void btnUpdateIcon_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog f = new OpenFileDialog();
+            f.Filter = "CH Icon Files |*.png|CH Icon Files |*.jpg";
+            f.Multiselect = false;
+            DialogResult r = f.ShowDialog();
+            if (r == DialogResult.OK)
+            {
+                lblFullFilePath.Text = f.FileName;
+                lblIconName.Text = f.SafeFileName;
+            }
         }
     }
 }
