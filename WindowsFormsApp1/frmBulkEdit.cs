@@ -275,8 +275,24 @@ namespace WindowsFormsApp1
             DialogResult r = f.ShowDialog();
             if (r == DialogResult.OK)
             {
-                lblFullFilePath.Text = f.FileName;
-                lblIconName.Text = f.SafeFileName;
+                //check width/height of image before updating values, otherwise alert user that the image isn't of the correct resolution.
+                var img = System.Drawing.Image.FromFile(f.FileName);
+                if (img.Width % 64 == 0 && img.Height == img.Width)
+                {
+                    lblFullFilePath.Text = f.FileName;
+                    lblIconName.Text = f.SafeFileName;
+                }
+                else
+                {
+                    DialogResult res = MessageBox.Show("Your image doesn't appear to be a correct size, and will be stretched accordingly.  Correct sizes for icons are multiples of 64x64 (i.e. 128x128, 256x256, etc.).  Do you want to Continue?", "Image size not recommended!", MessageBoxButtons.YesNo);
+                    if (res == DialogResult.Yes)
+                    {
+                        lblFullFilePath.Text = f.FileName;
+                        lblIconName.Text = f.SafeFileName;
+                    }
+
+                }
+                
             }
         }
     }
