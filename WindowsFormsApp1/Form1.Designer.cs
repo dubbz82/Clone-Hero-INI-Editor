@@ -86,6 +86,8 @@
             this.btnSaveCharter = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnSaveIcon = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtDelay = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -597,6 +599,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.txtDelay);
+            this.groupBox5.Controls.Add(this.label10);
             this.groupBox5.Controls.Add(this.btnSaveIcon);
             this.groupBox5.Controls.Add(this.txtIcon);
             this.groupBox5.Controls.Add(this.label18);
@@ -625,6 +629,22 @@
             this.btnSaveIcon.UseVisualStyleBackColor = true;
             this.btnSaveIcon.Click += new System.EventHandler(this.btnSaveIcon_Click);
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(176, 106);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 13);
+            this.label10.TabIndex = 126;
+            this.label10.Text = "Delay (in ms)";
+            // 
+            // txtDelay
+            // 
+            this.txtDelay.Location = new System.Drawing.Point(252, 106);
+            this.txtDelay.Name = "txtDelay";
+            this.txtDelay.Size = new System.Drawing.Size(100, 20);
+            this.txtDelay.TabIndex = 127;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -641,7 +661,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Clone Hero INI Editor v 0.8.1";
+            this.Text = "Clone Hero INI Editor v 0.8.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -720,6 +740,8 @@
         private System.Windows.Forms.Button btnSaveCharter;
         private System.Windows.Forms.Button btnSaveIcon;
         private System.Windows.Forms.Button btnGenreSave;
+        private System.Windows.Forms.TextBox txtDelay;
+        private System.Windows.Forms.Label label10;
     }
 }
 

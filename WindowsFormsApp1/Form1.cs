@@ -249,6 +249,10 @@ namespace WindowsFormsApp1
                     {
                         txtAlbumTrack.Text = line.Replace("album_track = ", "");
                     }
+                    if (line.StartsWith("delay = "))
+                    {
+                        txtDelay.Text = line.Replace("delay = ", "");
+                    }
 
                     if (line.StartsWith(";"))
                     {
@@ -517,6 +521,10 @@ namespace WindowsFormsApp1
                 {
                     outputFile.WriteLine("playlist_track = " + txtPlaylistTrack.Text);
                 }
+                if (txtDelay.Text != "")
+                {
+                    outputFile.WriteLine("delay = " + txtDelay.Text);
+                }
                 
             }
             MessageBox.Show("ini file saved successfully!", "Success!");
@@ -537,6 +545,7 @@ namespace WindowsFormsApp1
             txtCharter.Text = "";
             txtAlbumTrack.Text = "";
             txtPlaylistTrack.Text = "";
+            txtDelay.Text = "";
             cboBandDifficulty.SelectedIndex = 0;
             cboBassDifficulty.SelectedIndex = 0;
             cboBassGHLDifficulty.SelectedIndex = 0;

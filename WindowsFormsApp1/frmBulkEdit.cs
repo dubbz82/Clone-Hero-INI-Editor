@@ -41,6 +41,7 @@ namespace WindowsFormsApp1
             dt.Rows.Add("icon", "icon = ");
             dt.Rows.Add("Album Track #", "album_track = ");
             dt.Rows.Add("Playlist Track #", "playlist_track = ");
+            dt.Rows.Add("Delay in ms", "delay = ");
 
             //populate drop down with known values...
 
