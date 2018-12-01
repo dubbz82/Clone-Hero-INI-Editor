@@ -42,6 +42,7 @@ namespace WindowsFormsApp1
             dt.Rows.Add("Album Track #", "album_track = ");
             dt.Rows.Add("Playlist Track #", "playlist_track = ");
             dt.Rows.Add("Delay in ms", "delay = ");
+            dt.Rows.Add("Loading Phrase", "loading_phrase = ");
 
             //populate drop down with known values...
 
@@ -106,6 +107,17 @@ namespace WindowsFormsApp1
             else
             {
                 grpIconInformation.Visible = false;
+            }
+
+            if (cboField.SelectedValue.ToString() == "loading_phrase = ")
+            {
+                txtNewValue.Multiline = true;
+                txtNewValue.Height = 120;
+            }
+            else
+            {
+                txtNewValue.Multiline = false;
+                txtNewValue.Height = 20;
             }
             selectedtag = cboField.SelectedValue.ToString();
             

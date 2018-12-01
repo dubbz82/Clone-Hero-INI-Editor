@@ -88,6 +88,8 @@
             this.btnSaveIcon = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.txtDelay = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtLoadingPhrase = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -237,7 +239,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 106);
+            this.label6.Location = new System.Drawing.Point(6, 154);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 13);
             this.label6.TabIndex = 124;
@@ -245,7 +247,7 @@
             // 
             // txtSongLength
             // 
-            this.txtSongLength.Location = new System.Drawing.Point(80, 103);
+            this.txtSongLength.Location = new System.Drawing.Point(80, 151);
             this.txtSongLength.Name = "txtSongLength";
             this.txtSongLength.Size = new System.Drawing.Size(77, 20);
             this.txtSongLength.TabIndex = 19;
@@ -437,7 +439,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(116, 63);
+            this.label17.Location = new System.Drawing.Point(117, 91);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(129, 13);
             this.label17.TabIndex = 123;
@@ -445,14 +447,14 @@
             // 
             // txtPreviewStartTime
             // 
-            this.txtPreviewStartTime.Location = new System.Drawing.Point(252, 60);
+            this.txtPreviewStartTime.Location = new System.Drawing.Point(253, 88);
             this.txtPreviewStartTime.Name = "txtPreviewStartTime";
             this.txtPreviewStartTime.Size = new System.Drawing.Size(100, 20);
             this.txtPreviewStartTime.TabIndex = 18;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(744, 426);
+            this.btnSave.Location = new System.Drawing.Point(744, 474);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(156, 23);
             this.btnSave.TabIndex = 100;
@@ -480,7 +482,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(4, 67);
+            this.label19.Location = new System.Drawing.Point(5, 95);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(35, 13);
             this.label19.TabIndex = 122;
@@ -488,7 +490,7 @@
             // 
             // txtCount
             // 
-            this.txtCount.Location = new System.Drawing.Point(42, 60);
+            this.txtCount.Location = new System.Drawing.Point(43, 88);
             this.txtCount.Name = "txtCount";
             this.txtCount.Size = new System.Drawing.Size(64, 20);
             this.txtCount.TabIndex = 17;
@@ -614,7 +616,7 @@
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Location = new System.Drawing.Point(476, 247);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(424, 156);
+            this.groupBox5.Size = new System.Drawing.Size(424, 200);
             this.groupBox5.TabIndex = 119;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Optional Fields";
@@ -632,7 +634,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(176, 106);
+            this.label10.Location = new System.Drawing.Point(176, 154);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 13);
             this.label10.TabIndex = 126;
@@ -640,16 +642,36 @@
             // 
             // txtDelay
             // 
-            this.txtDelay.Location = new System.Drawing.Point(252, 106);
+            this.txtDelay.Location = new System.Drawing.Point(252, 154);
             this.txtDelay.Name = "txtDelay";
             this.txtDelay.Size = new System.Drawing.Size(100, 20);
             this.txtDelay.TabIndex = 127;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(5, 398);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(81, 13);
+            this.label22.TabIndex = 1000000005;
+            this.label22.Text = "Loading Phrase";
+            // 
+            // txtLoadingPhrase
+            // 
+            this.txtLoadingPhrase.AcceptsReturn = true;
+            this.txtLoadingPhrase.Location = new System.Drawing.Point(92, 386);
+            this.txtLoadingPhrase.Multiline = true;
+            this.txtLoadingPhrase.Name = "txtLoadingPhrase";
+            this.txtLoadingPhrase.Size = new System.Drawing.Size(345, 78);
+            this.txtLoadingPhrase.TabIndex = 1000000006;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(918, 461);
+            this.ClientSize = new System.Drawing.Size(918, 509);
+            this.Controls.Add(this.txtLoadingPhrase);
+            this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -661,7 +683,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Clone Hero INI Editor v 0.8.2";
+            this.Text = "Clone Hero INI Editor v 0.8.3";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -742,6 +764,8 @@
         private System.Windows.Forms.Button btnGenreSave;
         private System.Windows.Forms.TextBox txtDelay;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox txtLoadingPhrase;
     }
 }
 

@@ -253,11 +253,16 @@ namespace WindowsFormsApp1
                     {
                         txtDelay.Text = line.Replace("delay = ", "");
                     }
+                    if (line.StartsWith("loading_phrase = "))
+                    {
+                        txtLoadingPhrase.Text = line.Replace("loading_phrase = ", "");
+                    }
 
                     if (line.StartsWith(";"))
                     {
                         txtComments.Text = txtComments.Text + line.Replace(";", "").Trim() + Environment.NewLine;
                     }
+
                 }
 
 
@@ -525,6 +530,10 @@ namespace WindowsFormsApp1
                 {
                     outputFile.WriteLine("delay = " + txtDelay.Text);
                 }
+                if (txtLoadingPhrase.Text != "")
+                {
+                    outputFile.WriteLine("loading_phrase = " + txtLoadingPhrase.Text);
+                }
                 
             }
             MessageBox.Show("ini file saved successfully!", "Success!");
@@ -546,6 +555,7 @@ namespace WindowsFormsApp1
             txtAlbumTrack.Text = "";
             txtPlaylistTrack.Text = "";
             txtDelay.Text = "";
+            txtLoadingPhrase.Text = "";
             cboBandDifficulty.SelectedIndex = 0;
             cboBassDifficulty.SelectedIndex = 0;
             cboBassGHLDifficulty.SelectedIndex = 0;
